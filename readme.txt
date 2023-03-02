@@ -500,3 +500,206 @@ const About = () => {
 };
 export default About;
 
+
+8.)Create folder titled "patient" in component folder.
+inside of patient folder, create 4 files:
+
+-patient.css
+-patient.js
+-patientdetail.js
+-patients.js
+
+9.)content for patient.css:
+
+ul {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+li {
+    padding: 10px;
+    margin: 10px;
+    width: 250px;
+    max-width: 250px;
+    max-height: 400px;
+    list-style-type: none;
+    justify-content: flex-start;
+  }
+.card {
+    margin: auto;
+    padding: 5px;
+    height: 100%;
+    width: 100%;
+    box-shadow: 5px 5px 10px #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: flex-start;
+    align-content: flex-start; */
+  }
+.card article {
+    padding: 5px;
+  }
+.card h3 {
+    padding: 4px;
+  }
+.card p {
+    padding: 3x;
+  }
+
+10.)CONTENT FOR PATIENT.JS:
+import { Button } from "@mui/material";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import "./Patient.css";
+const Patient = (props) => {
+  const history = useNavigate();
+  const { _id, name, dob, insurance, patient_id, discharged} = props.patient;
+  const deleteHandler = async () => {
+    await axios
+      .delete(`http://localhost:3002/patient/${_id}`)
+      .then((res) => res.data)
+      .then(() => history("/"))
+      .then(() => history("/patient"));
+  };
+return (
+    <div className="card">
+      <article>Patient Name:{name}</article>
+      <h3>D.O.B:{dob}</h3>
+      <p>Insurance:{insurance}</p>
+      <h3>Patient ID: {patient_id}</h3>
+      <p>Discharged: {discharged}</p>
+      <Button LinkComponent={Link} to={`/patient/${_id}`} sx={{ mt: "auto" }}>
+        Update Patient Information
+      </Button>
+      <Button color="error" onClick={deleteHandler} sx={{ mt: "auto" }}>
+        Delete Patient Information
+      </Button>
+    </div>
+  );
+};
+
+export default Patient;
+
+11.)CONTENT FOR PatientDetail.js:
+import {
+    Box,
+    Button,
+    Checkbox,
+    FormControlLabel,
+    FormLabel,
+    TextField,
+  } from "@mui/material";
+  import axios from "axios";
+  import React, { useEffect, useState } from "react";
+  import { useNavigate, useParams } from "react-router-dom";
+const PatientDetail = () => {
+    const [inputs, setInputs] = useState();
+    const id = useParams().id;
+    const [checked, setChecked] = useState(false);
+    const history = useNavigate();
+    useEffect(() => {
+      const fetchHandler = async () => {
+        await axios
+          .get(`http://localhost:3002/patient/${id}`)
+          .then((res) => res.data)
+          .then((data) => setInputs(data.patient));
+      };
+      fetchHandler();
+    }, [id]);
+    const sendRequest = async () => {
+      await axios
+        .put(`http://localhost:3002/patient/${id}`, {
+          name: String(inputs.name),
+          dob: String(inputs.dob),
+          patient_id: Number(inputs.patient_id),
+          insurance: String(inputs.insurance),
+          discharged: Boolean(checked),
+        })
+        .then((res) => res.data);
+    };
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      sendRequest().then(() => history("/patient"));
+    };
+    const handleChange = (e) => {
+      setInputs((prevState) => ({
+        ...prevState,
+        [e.target.name]: e.target.value,
+      }));
+    };
+return (
+      <div>
+        {inputs && (
+          <form onSubmit={handleSubmit}>
+            <Box
+              display="flex"
+              flexDirection="column"
+              justifyContent={"center"}
+              maxWidth={700}
+              alignContent={"center"}
+              alignSelf="center"
+              marginLeft={"auto"}
+              marginRight="auto"
+              marginTop={10}
+            >
+
+            <FormLabel>Name:</FormLabel>
+              <TextField
+                value={inputs.name}
+                onChange={handleChange}
+                margin="normal"
+                fullWidth
+                variant="outlined"
+                name="name"
+              />
+              <FormLabel>Date of Birth:</FormLabel>
+              <TextField
+                value={inputs.dob}
+                onChange={handleChange}
+                margin="normal"
+                fullWidth
+                variant="outlined"
+                name="dob"
+              />
+              <FormLabel>Insurance:</FormLabel>
+              <TextField
+                value={inputs.insurance}
+                onChange={handleChange}
+                margin="normal"
+                fullWidth
+                variant="outlined"
+                name="insurance"
+              />
+<FormLabel>Patient ID:</FormLabel>
+              <TextField
+                value={inputs.patient_id}
+                onChange={handleChange}
+                type="number"
+                margin="normal"
+                fullWidth
+                variant="outlined"
+                name="patient_id"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={checked}
+                    onChange={() => setChecked(!checked)}
+                  />
+                }
+label="Discharged"
+              />
+              <Button variant="contained" type="submit">
+                Update Patient Information
+              </Button>
+            </Box>
+          </form>
+        )}
+      </div>
+    );
+  };
+  export default PatientDetail;
+

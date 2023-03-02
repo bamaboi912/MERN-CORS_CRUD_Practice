@@ -344,3 +344,47 @@ install axios:
     npm instal axios
 
 then npm start on command line
+
+
+2.) Clear out default values
+
+-Delete all content for app.css and app.js
+-delete app.tests.js
+- clear out index.css
+-delete logo.svg
+-delete reportwebvitals and setuptests.js
+-delete the import statement of "import reportWebVitals from './reportWebVitals';" from index.js
+
+
+3.) create folder stucture for front end
+
+-create new folder titled "components" in src folder. create 4 new files inside of "components", 
+Home.js, Header.js,AddPatient.js, About.js
+
+4.)content for Home.js
+
+import { Button, Typography, Box } from "@mui/material";
+import React from "react";
+import { Link } from "react-router-dom";
+const Home = () => {
+  return (
+    <div>
+      <Box display="flex" flexDirection="column" alignItems="center">
+        <Button
+          LinkComponent={Link}
+          to="/patient"
+          sx={{ marginTop: 15, background: "blue" }}
+          variant="contained"
+        >
+          <Typography variant="h3">View Patient Information</Typography>
+        </Button>
+      </Box>
+    </div>
+  );
+};
+export default Home;
+
+update repository
+
+
+5.)

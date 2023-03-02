@@ -65,3 +65,38 @@ command in terminal window: npm install cors mongoose express nodemon
     "nodemon": "^2.0.20"
   }
 }
+
+6.)Create index.js file and establish communication to MongoDB (database)
+
+content for index.js
+
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+mongoose.set('strictQuery', true);
+
+//Middleware
+app.use(express.json());
+const cors = require("cors");
+
+app.use(cors());
+//define backend port
+const PORT = 3002
+
+//establish link to MongoDB
+
+mongoose.connect("mongodb+srv://bamaboi912:Student1234!@cluster0.yjjlgsl.mongodb.net/CapeHealthCare?retryWrites=true&w=majority").then(() => console.log
+("Connected To Database"))
+.then(()=>console.log("Backend Server Listening on Port:"+ PORT))
+.then(()=>{
+    app.listen(PORT)
+}).catch((err)=>console.log(err));
+
+*endofcode------>
+
+Start server with npm command: npm start
+
+7.) Create Folder to Hold Mongoose Model(structuring of information)
+
+-Create folder titled "Model" in server folder, and then create file 
+titled as the same name as your collection.

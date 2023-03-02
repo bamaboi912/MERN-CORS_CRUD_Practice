@@ -2,10 +2,10 @@ import React from "react";
 import Header from "./components/Header";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
-import AddPatient from "./components/AddPatient";
-import Patients from "./components/patient/Patients";
+import AddPatient from "./components/AddPatients";
+import Patients from "./components/patient/patients";
 import About from "./components/About";
-import PatientDetail from "./components/patient/PatientDetail";
+import PatientDetail from "./components/patient/patientdetail";
 function App() {
   return (
     <React.Fragment>

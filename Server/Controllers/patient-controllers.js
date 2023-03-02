@@ -5,7 +5,7 @@ const patientSchema = require("../Models/PatientInformation");
 const getAllPatients = async (req, res, next) =>{
     let patients;
     try{
-        patients = await PatientSchema.find()
+        patients = await patientSchema.find()
     }catch(err){
     console.log(err)
     }
@@ -20,7 +20,7 @@ const getById = async (req, res, next) =>{
     const id = req.params.id;
     let patient;
     try{
-        patient = await PatientSchema.findById(id);
+        patient = await patientSchema.findById(id);
     }catch(err){
         console.log(err)
     }
@@ -35,7 +35,7 @@ const addPatient = async (req, res, next)=>{
     const {name, dob, insurance, patient_id, discharged} = req.body;
     let patient;
     try{
-        patient = new PatientSchema({
+        patient = new patientSchema({
             name, 
             dob, 
             insurance, 
@@ -59,7 +59,7 @@ const updatePatient = async (req, res, next) => {
     const {name, dob, insurance, patient_id, discharged } = req.body;
     let patient;
     try{
-        patient = await PatientSchema.findByIdAndUpdate(id, {
+        patient = await patientSchema.findByIdAndUpdate(id, {
             name, 
             dob, 
             insurance, 
@@ -81,7 +81,7 @@ const deletePatient = async (req,res, next) => {
     const id = req.params.id;
     let patient;
     try{
-        patient = await PatientSchema.findByIdAndRemove(id);
+        patient = await patientSchema.findByIdAndRemove(id);
     } catch(err){
         console.log(err);
     }

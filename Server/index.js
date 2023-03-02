@@ -16,7 +16,7 @@ const PORT = 3002
 const router = require("./Routes/patient-routes");
 
 // define url and first unique identifier
-app.use("./patient", router);
+app.use("/patient", router);
 
 //establish link to MongoDB
 

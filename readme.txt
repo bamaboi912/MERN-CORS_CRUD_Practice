@@ -306,4 +306,41 @@ mongoose.connect("mongodb+srv://bamaboi912:Student1234!@cluster0.yjjlgsl.mongodb
 <------------------------------------------------------------endofcode--------------------------------------------------------------->
 
 
+frontend
 
+Front End Configuration:
+
+1.) Split terminal
+
+Navigate to Client folder on command line in terminal window
+
+    command: cd client
+
+Install react and front end dependencies
+
+
+Create Client Folder. 
+
+command to install REACT: npx create-react-app .
+
+install react router for URLS and CRUD ops: 
+
+commnad: npm install react-router-dom@6
+
+install MaterialUI Library to render images
+
+command: npm install @mui/material @emotion/react @emotion/styled
+
+then search for icons after download in search bar on smae page:
+
+icons command: 
+npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
+
+or npm install @mui/icons material
+
+
+install axios: 
+
+    npm instal axios
+
+then npm start on command line

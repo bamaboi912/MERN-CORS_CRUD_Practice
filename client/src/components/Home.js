@@ -1,7 +1,7 @@
 import { Button, Typography, Box } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";.
-import
+
 const Home = () => {
   return (
     <div>

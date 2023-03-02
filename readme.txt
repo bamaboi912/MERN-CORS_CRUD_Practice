@@ -248,6 +248,7 @@ connect for patient-Routes
 
 const express = require("express");
 const router = express.Router();
+const patientControllers = require("../Controllers/patient-controllers")
 
 //assign functionality to Url's
 
@@ -265,4 +266,44 @@ router.delete("/:id", patientControllers.deletePatient);
 
 module.exports = router;
 
+
 <--------------------------------------------------------------------------------endofcode-------------------------------->
+
+10.)Amend index.js to incorporate routes for CRUD processing
+
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+mongoose.set('strictQuery', true);
+
+//Middleware
+app.use(express.json());
+const cors = require("cors");
+
+app.use(cors());
+//define backend port
+const PORT = 3002
+
+//define routes
+
+const router = require("./Routes/patient-routes");
+
+// define url and first unique identifier
+app.use("./patient", router);
+
+//establish link to MongoDB
+
+mongoose.connect("mongodb+srv://bamaboi912:Student1234!@cluster0.yjjlgsl.mongodb.net/CapeHealthCare?retryWrites=true&w=majority").then(() => console.log
+("Connected To Database"))
+.then(()=>console.log("Backend Server Listening on Port:"+ PORT))
+.then(()=>{
+    app.listen(PORT)
+}).catch((err)=>console.log(err));
+
+
+
+*update repository
+<------------------------------------------------------------endofcode--------------------------------------------------------------->
+
+
+

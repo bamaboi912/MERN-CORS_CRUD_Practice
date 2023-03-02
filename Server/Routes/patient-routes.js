@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const patientControllers = require("../Controllers/patient-controllers")
 
 //assign functionality to Url's
 

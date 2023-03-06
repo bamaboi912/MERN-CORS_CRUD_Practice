@@ -1,9 +1,12 @@
 import { Button, Typography, Box } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";.
+import { Link } from "react-router-dom";
+import "./Home.css"
+import hospital from "../images/hosp.jpg"
 
 const Home = () => {
   return (
+    <><img src={hospital} alt="hospitald"></img>
     <div>
       <Box display="flex" flexDirection="column" alignItems="center">
         <Button
@@ -15,7 +18,7 @@ const Home = () => {
           <Typography variant="h3">View Patient Information</Typography>
         </Button>
       </Box>
-    </div>
+    </div></>
   );
 };
 export default Home;

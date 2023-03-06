@@ -19,3 +19,68 @@ command: npm install mongoose cors express nodemon
 
 
 *insert screenshot of dependencies in JSON
+
+![Alt text](MD%20images/backend%20dependencies.png)
+
+
+CRUD OPERATIONS FOR BACKEND:
+
+
+1. Create Post Request to populate DB
+![Alt text](MD%20images/Post%20request.png)
+*insert screen shot of using post request url to send information to DB
+
+2. Create Get request to get all information from DB.
+ ![Alt text](MD%20images/get%20request.png)
+*insert screenshot of using get requet to fetch values from collection from DB
+
+
+3. Create get request to fetch individual value from Db
+![Alt text](MD%20images/get%20request%20individual.png)
+*screen shot of using request to fetch individual value from DB
+
+4. Create update request to update information for values in collection. 
+![Alt text](MD%20images/update%20request.png)
+*insert screenshot of using update request to update information
+
+
+5. Create delete request to delete a value from collection.
+![Alt text](MD%20images/delete%20request.png)
+
+
+
+npx - NPX stands for Node Package eXecute. It is simply an NPM package runner. It allows developers to execute any Javascript Package available 
+on the NPM registry without even installing it. NPX is installed automatically with NPM version 5.2.
+
+Create Client Folder. command to install REACT: npx create-react-app .
+
+install react router for URLS and CRUD ops: 
+command: npm install react-router-dom@6
+
+install MaterialUI Library to render images
+command: npm install @mui/material @emotion/react @emotion/styled
+
+then search for icons after download in search bar on smae page:
+icons command: 
+npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
+
+or npm install @mui/icons material
+
+
+then npm start:
+
+
+1. Create screen shot for home page.
+![Home page](MD%20images/Home%20page.png)
+
+2. Create screen shot for Add patient
+![Add Patient](MD%20images/add%20patient.png)
+
+3. Create screen shot for Patient information.
+![Patient Information](MD%20images/patient%20information%20page.png)
+
+4. Create screen shot for About page.
+![About page](MD%20images/about%20page.png)
+
+5. Create screen shot for patient update.
+![Alt text](MD%20images/patient%20update.png)
